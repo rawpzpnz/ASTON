@@ -2,10 +2,6 @@ package org.example;
 
 public class Employee {
 
-    public static void main(String[] args) {
-        Employee employee1 = new Employee("Тележенко Андрей Андреевич", "тестировщик", "andrey@test.com", "+79912345678", 112345, 32);
-        employee1.info();
-    }
     private final String fullName;
     private final String position;
     private final String email;

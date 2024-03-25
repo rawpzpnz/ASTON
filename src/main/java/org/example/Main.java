@@ -2,8 +2,9 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+        Employee employee1 = new Employee("Тележенко Андрей Андреевич", "тестировщик", "andrey@test.com", "+79912345678", 112345, 32);
+        employee1.info();
         Employee[] employees = new Employee[5];
-
         employees[0] = new Employee("Иванов Иван Иванович", "Инженер", "ivanov@example.com", "+79991234501", 50400, 30);
         employees[1] = new Employee("Петров Петр Петрович", "Менеджер", "petrov@example.com", "+79991234502", 60020, 35);
         employees[2] = new Employee("Сидоров Алексей Владимирович", "Разработчик", "sidorov@example.com", "+79991234503", 70000, 28);
