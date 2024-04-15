@@ -1,35 +1,47 @@
 package org.example;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
-        Cat[] cats = {
-                new Cat("Белый"),
-                new Cat("Серый"),
-                new Cat("Черный")
+        String[][] correctArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "0", "1", "2"},
+                {"3", "4", "5", "6"}
         };
 
-        Dog dog = new Dog("Бобик");
+        String[][] incorrectSizeArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15"}
+        };
 
-        Bowl bowl = new Bowl(20);
-        for (Cat cat : cats) {
-            cat.eatFromBowl(bowl, 5);
+        String[][] incorrectDataArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "0", "test", "11"},
+                {"12", "13", "14", "15"}
+        };
+
+        ArrayValidator validator = new ArrayValidator();
+
+        try {
+            int result = validator.processArray(correctArray);
+            System.out.println("Сумма: " + result);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
-        bowl.addFood(15);
 
-        for (Cat cat : cats) {
-            if (!cat.isSatiety()) {
-                cat.eatFromBowl(bowl, 5);
-                System.out.println(cat.getName() + " повторно покушал, сытость: " + cat.isSatiety());
-            }
+        try {
+            int result = validator.processArray(incorrectSizeArray);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
 
-        for (Cat cat : cats) {
-            cat.run(150);
-            cat.swim(5);
+        try {
+            int result = validator.processArray(incorrectDataArray);
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.err.println("Ошибка: " + e.getMessage());
         }
-        dog.run(450);
-        dog.swim(8);
-
-        System.out.println("Всего животных: " + Animal.getCount());
     }
 }
